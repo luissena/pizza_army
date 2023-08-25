@@ -76,7 +76,7 @@ export default function page() {
 
       <div className="w-full mx-auto items-center  shadow p-5 rounded-lg">
         {produtos ? (
-          <Table aria-label="Example table with dynamic content">
+          <Table>
             <TableHeader columns={columns}>
               {(column) => (
                 <TableColumn key={column.key}>{column.label}</TableColumn>
