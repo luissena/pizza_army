@@ -1,6 +1,5 @@
 // app/layout.tsx
 import "./globals.css"
-import { Providers } from "./providers"
 
 export default function RootLayout({
   children,
@@ -9,9 +8,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <Providers>{children}</Providers>
-      </body>
+      <body>{children}</body>
     </html>
   )
 }

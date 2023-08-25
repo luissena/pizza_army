@@ -1,6 +1,7 @@
 // app/layout.tsx
 import { MyHeader } from "@/components/MyHeader"
 import { Metadata } from "next"
+import { Providers } from "../providers"
 
 export const metadata: Metadata = {
   title: "Pizza Army",
@@ -15,8 +16,10 @@ export default function MarketLayout({
   return (
     <html lang="en">
       <body>
-        <MyHeader />
-        {children}
+        <Providers>
+          <MyHeader />
+          {children}
+        </Providers>
       </body>
     </html>
   )
