@@ -1,3 +1,6 @@
+"use client"
+import { useCartStore } from "@/stores/useCartStore"
+import { Badge } from "@nextui-org/badge"
 import Link from "next/link"
 import {
   MdMenu,
@@ -7,6 +10,7 @@ import {
 } from "react-icons/md"
 
 export function MyHeader() {
+  const cartCount = useCartStore((state) => state.items.length)
   return (
     <header className=" grid grid-cols-8 lg:grid-cols-12 items-center px-10 py-3 lg:py-4 lg:pl-32 lg:pr-6 text-sm sticky top-0 bg-white z-50 ">
       <div className="  col-span-5 cursor-pointer hidden lg:flex lg:items-center   lg:gap-1">
@@ -33,9 +37,11 @@ export function MyHeader() {
           <Link href="/auth" className="hidden lg:block ">
             <MdPersonOutline />
           </Link>
-          <Link href="/cart">
-            <MdOutlineShoppingCart />
-          </Link>
+          <Badge content={cartCount} color="primary">
+            <Link href="/cart">
+              <MdOutlineShoppingCart />
+            </Link>{" "}
+          </Badge>
         </div>
       </div>
     </header>

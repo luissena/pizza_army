@@ -73,7 +73,7 @@ export default async function Page({
           ratingCount={mockData.rating_count}
         >
           <SelectProductType flavors={produto.sabores} />
-          <AddCart />
+          <AddCart product={produto} />
         </ProductDescription>
 
         <PizzaWithIngredientsAnimation />
