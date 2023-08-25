@@ -1,10 +1,6 @@
-import type { Metadata } from "next"
+// app/layout.tsx
 import "./globals.css"
-
-export const metadata: Metadata = {
-  title: "Pizza Army",
-  description: "Teste técnico para a Caffeine Army",
-}
+import { Providers } from "./providers"
 
 export default function RootLayout({
   children,
@@ -13,7 +9,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }
