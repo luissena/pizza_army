@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { MdStar } from "react-icons/md"
-import { getAllProducts } from "../utils/fetchProduct"
+import { getAllProducts } from "../../utils/fetchProduct"
 
 export default async function page() {
   const productsData = getAllProducts()

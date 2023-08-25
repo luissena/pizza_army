@@ -1,4 +1,4 @@
-import { Produto } from "@/stores/useCartStore"
+import { Produto } from "@/utils/fetchProduct"
 import {
   Button,
   Input,

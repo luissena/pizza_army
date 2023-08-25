@@ -1,7 +1,7 @@
 "use client"
 
 import { ModalViewProduct } from "@/components/ModalViewProduct"
-import { Produto } from "@/stores/useCartStore"
+import { Produto } from "@/utils/fetchProduct"
 
 import {
   Button,

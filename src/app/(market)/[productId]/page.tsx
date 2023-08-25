@@ -1,4 +1,3 @@
-import { getProductById } from "@/app/utils/fetchProduct"
 import { AddCart } from "@/components/AddCart"
 import { CustommerReviews } from "@/components/CustommerReviews"
 import { PizzaWithHighlits } from "@/components/PizzaWithHighlits"
@@ -9,6 +8,7 @@ import { ProductDescription } from "@/components/ProductDescription"
 import { ProductPhotosCarouselMobile } from "@/components/ProductPhotosCarouselMobile"
 import { ProductPhotosDesktop } from "@/components/ProductPhotosDesktop"
 import { SelectProductType } from "@/components/SelectProductType"
+import { getProductById } from "@/utils/fetchProduct"
 
 export default async function Page({
   params,
