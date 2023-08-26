@@ -5,7 +5,7 @@ import { Produto } from "@/utils/fetchProduct"
 
 import {
   Button,
-  CircularProgress,
+  Spinner,
   Table,
   TableBody,
   TableCell,
@@ -110,7 +110,7 @@ export default function page() {
             </TableBody>
           </Table>
         ) : (
-          <CircularProgress className="mx-auto" />
+          <Spinner className="mx-auto flex" />
         )}
       </div>
     </div>
