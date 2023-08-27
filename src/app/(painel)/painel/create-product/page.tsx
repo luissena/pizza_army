@@ -1,18 +1,16 @@
 import { CreateProductForm } from "@/components/CreateProductForm"
 import { createProduct } from "@/utils/fetchProduct"
-import { revalidatePath, revalidateTag } from "next/cache"
+import { revalidatePath } from "next/cache"
 import Link from "next/link"
 import { redirect } from "next/navigation"
 import { MdOutlineArrowBackIosNew } from "react-icons/md"
-
-export const dynamic = "force-dynamic"
 
 export default async function page() {
   const createNewProduct = async (formData: FormData) => {
     "use server"
     await createProduct(formData)
-    revalidateTag("products")
-    revalidatePath("/painel")
+    revalidatePath("/")
+
     redirect("/painel")
   }
 
