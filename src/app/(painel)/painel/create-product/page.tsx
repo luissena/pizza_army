@@ -10,6 +10,7 @@ export default async function page() {
     "use server"
     await createProduct(formData)
     revalidatePath("/")
+    revalidatePath("/painel")
 
     redirect("/painel")
   }
