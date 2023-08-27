@@ -5,6 +5,8 @@ import Link from "next/link"
 import { redirect } from "next/navigation"
 import { MdOutlineArrowBackIosNew } from "react-icons/md"
 
+export const dynamic = "force-dynamic"
+
 export default async function page() {
   const createNewProduct = async (formData: FormData) => {
     "use server"
