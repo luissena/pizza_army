@@ -42,9 +42,13 @@ export const CreateProductForm = ({
       const files = element.files
 
       if (files) {
-        setLoadingPhotos(true)
         const uploadedFilePromises = []
 
+        if (files.length > 4) return alert("Você só pode adicionar até 4 fotos")
+        if (files.length < 4)
+          return alert("Você precisa adicionar pelo menos 4 fotos")
+
+        setLoadingPhotos(true)
         for (let i = 0; i < files.length; i++) {
           const file = files[i]
           const filename = `${file.name}-${Date.now()}`
@@ -87,6 +91,7 @@ export const CreateProductForm = ({
 
   function handleFormSubmit(p: CreateProductFormData) {
     if (!uploadedImageUrls.length) return alert("Adicione fotos do produto")
+
     create({
       name: p.name,
       price: p.price,
