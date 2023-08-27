@@ -9,6 +9,7 @@ import { ProductPhotosCarouselMobile } from "@/components/ProductPhotosCarouselM
 import { ProductPhotosDesktop } from "@/components/ProductPhotosDesktop"
 import { SelectProductType } from "@/components/SelectProductType"
 import { getAllProducts, getProductById } from "@/services/prisma"
+import { Spinner } from "@nextui-org/spinner"
 import { Suspense } from "react"
 
 export default async function Page({
@@ -65,11 +66,11 @@ export default async function Page({
   return (
     <main className="overflow-x-hidden max-w-7xl mx-auto">
       <div className="grid grid-cols-3 gap-12 ml-2 lg:ml-12 lg:mr-32">
-        <ProductPhotosDesktop productImages={mockData.photos} />
+        <Suspense fallback={<Spinner />}>
+          <ProductPhotosDesktop productImages={product.photos} />
 
-        <ProductPhotosCarouselMobile productImages={mockData.photos} />
+          <ProductPhotosCarouselMobile productImages={product.photos} />
 
-        <Suspense fallback={<div>Carregando...</div>}>
           <ProductDescription
             name={product.name}
             description={product.description}

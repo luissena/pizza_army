@@ -1,5 +1,6 @@
 // app/layout.tsx
 import { MyHeader } from "@/components/MyHeader"
+import { Spinner } from "@nextui-org/spinner"
 import { Metadata } from "next"
 import { Suspense } from "react"
 import { Providers } from "../providers"
@@ -19,7 +20,9 @@ export default function MarketLayout({
       <body>
         <Providers>
           <MyHeader />
-          <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+          <Suspense fallback={<Spinner className="flex h-screen m-auto" />}>
+            {children}
+          </Suspense>
         </Providers>
       </body>
     </html>
