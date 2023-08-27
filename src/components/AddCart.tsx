@@ -1,6 +1,7 @@
 "use client"
 import { Item, useCartStore } from "@/stores/useCartStore"
 import { Product } from "@/utils/fetchProduct"
+import { formatCurrency } from "@/utils/formatCurrency"
 import { Button } from "@nextui-org/button"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
@@ -57,7 +58,7 @@ export const AddCart = ({ product }: { product: Product }) => {
         <div className=" text-lg font-light select-none">
           Subtotal:{" "}
           <span className="font-bold">
-            R$ {(quantity * product.price).toFixed(2)}
+            {formatCurrency(product.price * quantity)}
           </span>
         </div>
       </div>

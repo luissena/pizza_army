@@ -1,4 +1,5 @@
 import { Product } from "@/utils/fetchProduct"
+import { formatCurrency } from "@/utils/formatCurrency"
 import {
   Button,
   Input,
@@ -45,7 +46,7 @@ export const ModalViewProduct = ({
                 <Input
                   className="col-span-3"
                   label="Preço"
-                  value={`R$ ${product?.price.toFixed(2)}`}
+                  value={formatCurrency(product?.price!)}
                   readOnly
                 />
 

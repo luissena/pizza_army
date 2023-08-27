@@ -1,5 +1,6 @@
 "use client"
 import { useCartStore } from "@/stores/useCartStore"
+import { formatCurrency } from "@/utils/formatCurrency"
 import { Button } from "@nextui-org/react"
 import Image from "next/image"
 
@@ -36,7 +37,7 @@ export default function Cart() {
               <div className="col-span-2 flex flex-col items-center lg:items-start">
                 <span className="text-sm font-light">Preço</span>
                 <span className="font-bold">
-                  R$ {item.product.price.toFixed(2)}
+                  {formatCurrency(item.product.price)}
                 </span>
               </div>
               <div className="col-span-2 flex flex-col items-center lg:items-start">
@@ -46,7 +47,7 @@ export default function Cart() {
               <div className="col-span-2 flex flex-col items-center lg:items-start">
                 <span className="text-sm font-light">Subtotal</span>
                 <span className="font-bold">
-                  R$ {(item.product.price * item.quantity).toFixed(2)}
+                  {formatCurrency(item.product.price * item.quantity)}
                 </span>
               </div>
             </div>
@@ -59,7 +60,7 @@ export default function Cart() {
       <div className="flex items-center my-5  ">
         <span className="text-xl">
           Total da compra:{" "}
-          <span className="font-bold ">R$ {total.toFixed(2)}</span>
+          <span className="font-bold ">{formatCurrency(total)}</span>
         </span>
         <Button className="ml-auto font-['Bebas_Neue'] text-xl leading-3 tracking-[0.72px] bg-[#FFB521] ">
           Finalizar compra

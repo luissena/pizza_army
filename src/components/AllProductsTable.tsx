@@ -1,6 +1,7 @@
 "use client"
 
 import { Product } from "@/utils/fetchProduct"
+import { formatCurrency } from "@/utils/formatCurrency"
 import {
   Spinner,
   Table,
@@ -61,7 +62,7 @@ export const AllProductsTable = ({ products }: { products: Product[] }) => {
                   columnKey !== "actions" ? (
                     <TableCell>
                       {columnKey === "price"
-                        ? `R$ ${getKeyValue(item, columnKey).toFixed(2)}`
+                        ? formatCurrency(getKeyValue(item, columnKey))
                         : getKeyValue(item, columnKey)}
                     </TableCell>
                   ) : (
