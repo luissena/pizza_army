@@ -1,7 +1,7 @@
 "use client"
 import { Item, useCartStore } from "@/stores/useCartStore"
+import { Product } from "@/utils/fetchProduct"
 import { Button } from "@nextui-org/button"
-import { Product } from "@prisma/client"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { BsFillDashCircleFill, BsPlusCircleFill } from "react-icons/bs"

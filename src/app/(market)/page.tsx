@@ -28,10 +28,6 @@ export default async function page() {
               alt="pizza"
             />
 
-            {produto.photos.map((photo) => (
-              <span>{photo.id}</span>
-            ))}
-
             <div className="flex justify-between">
               <div className="flex flex-col font-medium">
                 <span>{produto.name}</span>

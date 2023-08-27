@@ -1,9 +1,9 @@
 "use client"
-import { Produto } from "@/utils/fetchProduct"
+import { Product } from "@/utils/fetchProduct"
 import { create } from "zustand"
 
 export interface Item {
-  product: Produto
+  product: Product
   quantity: number
   selectedFlavor: Set<string>
 }

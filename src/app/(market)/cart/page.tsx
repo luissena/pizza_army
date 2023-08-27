@@ -7,7 +7,7 @@ export default function Cart() {
   const items = useCartStore((state) => state.items)
 
   const total = items.reduce((acc, item) => {
-    return acc + item.product.preco * item.quantity
+    return acc + item.product.price * item.quantity
   }, 0)
   return (
     <section className="max-w-5xl mx-5 lg:mx-auto mt-5">
@@ -27,7 +27,7 @@ export default function Cart() {
               />
               <div className="col-span-2 flex flex-col items-center lg:items-start">
                 <span className="text-sm font-light">Produto</span>
-                <span className="font-bold">{item.product.nome}</span>
+                <span className="font-bold">{item.product.name}</span>
               </div>
               <div className="col-span-2 flex flex-col items-center lg:items-start">
                 <span className="text-sm font-light">Sabor</span>
@@ -36,7 +36,7 @@ export default function Cart() {
               <div className="col-span-2 flex flex-col items-center lg:items-start">
                 <span className="text-sm font-light">Preço</span>
                 <span className="font-bold">
-                  R$ {item.product.preco.toFixed(2)}
+                  R$ {item.product.price.toFixed(2)}
                 </span>
               </div>
               <div className="col-span-2 flex flex-col items-center lg:items-start">
@@ -46,7 +46,7 @@ export default function Cart() {
               <div className="col-span-2 flex flex-col items-center lg:items-start">
                 <span className="text-sm font-light">Subtotal</span>
                 <span className="font-bold">
-                  R$ {(item.product.preco * item.quantity).toFixed(2)}
+                  R$ {(item.product.price * item.quantity).toFixed(2)}
                 </span>
               </div>
             </div>
