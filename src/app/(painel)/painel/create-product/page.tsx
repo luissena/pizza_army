@@ -9,6 +9,7 @@ export default async function page() {
   const createNewProduct = async (formData: FormData) => {
     "use server"
     await createProduct(formData)
+    revalidatePath("/")
     revalidatePath("/painel/painel")
 
     redirect("/painel")
