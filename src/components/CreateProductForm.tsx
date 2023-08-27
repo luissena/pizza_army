@@ -25,7 +25,7 @@ export const CreateProductForm = ({
   const createProductFormSchema = z.object({
     name: z.string().nonempty("Nome do produto é obrigatório"),
     price: z.coerce
-      .number()
+      .number({ invalid_type_error: "Preço deve ser um número" })
       .nonnegative("Preço não pode ser negativo")
       .min(1, "Preço é obrigatório"),
     description: z.string().nonempty("Descrição é obrigatória"),
@@ -111,7 +111,6 @@ export const CreateProductForm = ({
         <Input
           {...register("price")}
           startContent={<span>R$</span>}
-          type="number"
           label="Preço"
         />
         {errors.price && (
