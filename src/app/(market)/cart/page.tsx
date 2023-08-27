@@ -73,18 +73,22 @@ export default function Cart() {
         )}
       </div>
 
-      <div className="col-span-2 flex items-center my-5  ">
-        <span className="text-xl">
-          Total da compra:{" "}
-          <span className="font-bold ">{formatCurrency(total)}</span>
-        </span>
-        <Button
-          onClick={finishPurchase}
-          className="ml-auto font-['Bebas_Neue'] text-xl leading-3 tracking-[0.72px] bg-[#FFB521] "
-        >
-          Finalizar compra
-        </Button>
-      </div>
+      {items.length > 0 ? (
+        <div className="col-span-2 flex items-center my-5  ">
+          <span className="text-xl">
+            Total da compra:{" "}
+            <span className="font-bold ">{formatCurrency(total)}</span>
+          </span>
+          <Button
+            onClick={finishPurchase}
+            className="ml-auto font-['Bebas_Neue'] text-xl leading-3 tracking-[0.72px] bg-[#FFB521] "
+          >
+            Finalizar compra
+          </Button>
+        </div>
+      ) : (
+        <></>
+      )}
     </section>
   )
 }
