@@ -121,8 +121,10 @@ export const CreateProductForm = ({
 
       <div className="col-span-6">
         <Textarea {...register("description")} label="Descrição" />
-        {errors.price && (
-          <span className="text-xs text-red-500">{errors.price?.message}</span>
+        {errors.description && (
+          <span className="text-xs text-red-500">
+            {errors.description?.message}
+          </span>
         )}
       </div>
 
