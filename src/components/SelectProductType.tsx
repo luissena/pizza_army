@@ -1,6 +1,6 @@
 "use client"
 
-import { Product } from "@/utils/fetchProduct"
+import { Product } from "@/services/prisma"
 import { Select, SelectItem } from "@nextui-org/react"
 import { useRouter } from "next/navigation"
 import { useState } from "react"

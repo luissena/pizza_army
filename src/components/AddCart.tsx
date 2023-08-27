@@ -1,6 +1,6 @@
 "use client"
+import { Product } from "@/services/prisma"
 import { Item, useCartStore } from "@/stores/useCartStore"
-import { Product } from "@/utils/fetchProduct"
 import { formatCurrency } from "@/utils/formatCurrency"
 import { Button } from "@nextui-org/button"
 import { useRouter } from "next/navigation"

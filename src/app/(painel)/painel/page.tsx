@@ -1,5 +1,5 @@
 import { AllProductsTable } from "@/components/AllProductsTable"
-import { getAllProducts } from "@/utils/fetchProduct"
+import { getAllProducts } from "@/services/prisma"
 
 import { Button } from "@nextui-org/button"
 

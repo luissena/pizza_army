@@ -1,4 +1,4 @@
-import { Product } from "@/utils/fetchProduct"
+import { Product } from "@/services/prisma"
 import { formatCurrency } from "@/utils/formatCurrency"
 import {
   Button,

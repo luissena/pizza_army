@@ -1,5 +1,5 @@
 "use client"
-import { Product } from "@/utils/fetchProduct"
+import { Product } from "@/services/prisma"
 import { create } from "zustand"
 
 export interface Item {

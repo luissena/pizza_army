@@ -1,6 +1,6 @@
 "use client"
 
-import { supabase } from "@/utils/supabase"
+import { supabase } from "@/lib/supabase"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button, Input, Spinner, Textarea } from "@nextui-org/react"
 import Image from "next/image"

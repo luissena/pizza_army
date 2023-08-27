@@ -1,4 +1,4 @@
-import { Product, createProduct } from "@/utils/fetchProduct"
+import { Product, createProduct } from "@/services/prisma"
 import { Button } from "@nextui-org/button"
 
 export function CreateProductButton({ data }: { data: Product }) {

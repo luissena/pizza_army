@@ -8,7 +8,7 @@ import { ProductDescription } from "@/components/ProductDescription"
 import { ProductPhotosCarouselMobile } from "@/components/ProductPhotosCarouselMobile"
 import { ProductPhotosDesktop } from "@/components/ProductPhotosDesktop"
 import { SelectProductType } from "@/components/SelectProductType"
-import { getAllProducts, getProductById } from "@/utils/fetchProduct"
+import { getAllProducts, getProductById } from "@/services/prisma"
 import { Suspense } from "react"
 
 export default async function Page({

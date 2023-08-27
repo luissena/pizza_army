@@ -1,5 +1,5 @@
 import { CreateProductForm } from "@/components/CreateProductForm"
-import { createProduct } from "@/utils/fetchProduct"
+import { createProduct } from "@/services/prisma"
 import { revalidatePath } from "next/cache"
 import Link from "next/link"
 import { redirect } from "next/navigation"
