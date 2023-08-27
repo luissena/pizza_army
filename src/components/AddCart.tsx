@@ -11,7 +11,6 @@ export const AddCart = ({ product }: { product: Product }) => {
   const router = useRouter()
 
   const [quantity, setQuantity] = useState(0)
-  const selectedFlavor = useCartStore((state) => state.selectedFlavor)
 
   const addToCart = useCartStore((state) => state.addToCart)
 
@@ -27,7 +26,6 @@ export const AddCart = ({ product }: { product: Product }) => {
   const item: Item = {
     product,
     quantity,
-    selectedFlavor: selectedFlavor.values().next().value,
   }
 
   const handleAddToCart = () => {

@@ -1,5 +1,4 @@
 "use client"
-import { useCartStore } from "@/stores/useCartStore"
 import { MdStar } from "react-icons/md"
 import { PiCheckBold } from "react-icons/pi"
 
@@ -20,8 +19,6 @@ export const ProductDescription: React.FC<IProductDescriptionProps> = ({
   ratingCount,
   children,
 }) => {
-  const selectedFlavor = useCartStore((state) => state.selectedFlavor)
-
   const roundedRating = Math.round(rating || 0)
   return (
     <div className="mr-2 col-span-3 lg:col-span-1 mt-5">

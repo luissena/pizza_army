@@ -13,16 +13,6 @@ export const SelectProductType = ({
   selectedId: string
 }) => {
   const router = useRouter()
-  // const selectedFlavor = useCartStore((state) => state.selectedFlavor)
-  // const handleSelectFlavor = useCartStore((state) => state.handleFlavor)
-
-  // const handleSelectionChange = (e: ChangeEvent<HTMLSelectElement>) => {
-  //   handleSelectFlavor(new Set([e.target.value]))
-  // }
-
-  // useEffect(() => {
-  //   handleSelectFlavor(new Set([products ? products[0] : "Sem sabores"]))
-  // }, [])
 
   const [value] = useState(new Set([selectedId]))
 
