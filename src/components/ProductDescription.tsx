@@ -25,11 +25,9 @@ export const ProductDescription: React.FC<IProductDescriptionProps> = ({
   const roundedRating = Math.round(rating || 0)
   return (
     <div className="mr-2 col-span-3 lg:col-span-1 mt-5">
-      <span className="text-xs">{name?.toUpperCase()}</span>
-
       <div className="flex items-end justify-between ">
         <h1 className="text-3xl leading-6 font-['Bebas_Neue'] tracking-[1.92px]">
-          {selectedFlavor}
+          {name}
         </h1>
 
         <div className="flex items-end gap-2">

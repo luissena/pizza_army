@@ -1,4 +1,4 @@
-import { Produto } from "@/utils/fetchProduct"
+import { Product } from "@/utils/fetchProduct"
 import {
   Button,
   Input,
@@ -24,7 +24,7 @@ export const ModalViewProduct = ({
 }: {
   isOpen: boolean
   onOpenChange: () => void
-  product: Produto
+  product: Product | undefined
 }) => {
   return (
     <Modal className=" " isOpen={isOpen} onOpenChange={onOpenChange}>
@@ -39,30 +39,25 @@ export const ModalViewProduct = ({
                 <Input
                   className="col-span-3"
                   label="Nome do produto"
-                  value={product.nome}
+                  value={product?.name}
                   readOnly
                 />
                 <Input
                   className="col-span-3"
                   label="Preço"
-                  value={`R$ ${product.preco.toFixed(2)}`}
+                  value={`R$ ${product?.price.toFixed(2)}`}
                   readOnly
                 />
-                <Input
-                  className="col-span-6"
-                  label="Sabores"
-                  value={product.sabores?.map((sabor) => sabor).join(", ")}
-                  readOnly
-                />
+
                 <Textarea
                   className="col-span-6"
                   label="Descrição"
-                  value={product.descricao}
+                  value={product?.description}
                   readOnly
                 />
 
                 <div className="col-span-6">
-                  {product.fotos ? (
+                  {product?.photos ? (
                     <Swiper
                       slidesPerView={1.5}
                       pagination
@@ -70,14 +65,14 @@ export const ModalViewProduct = ({
                       mousewheel
                       autoplay
                     >
-                      {product.fotos?.map((image) => (
-                        <SwiperSlide key={image}>
+                      {product?.photos?.map((photo) => (
+                        <SwiperSlide key={photo.id}>
                           <Image
                             className=""
                             alt="Foto do produto"
                             width={250}
                             height={250}
-                            src={image}
+                            src={`https://naujadmfrtsfswtpbiyx.supabase.co/storage/v1/object/public/products/${photo.url}`}
                           />
                         </SwiperSlide>
                       ))}

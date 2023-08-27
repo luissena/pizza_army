@@ -16,11 +16,8 @@ interface Store {
 }
 
 export const useCartStore = create<Store>((set, get) => {
-  const initialCart = localStorage.getItem("cart")
-
-  const parsedInitialCart = initialCart ? JSON.parse(initialCart) : []
   return {
-    items: parsedInitialCart,
+    items: [],
     selectedFlavor: new Set<string>(),
     handleFlavor: (flavor: Set<string>) => {
       set({
@@ -37,4 +34,3 @@ export const useCartStore = create<Store>((set, get) => {
     },
   }
 })
-// items: [...get().items, item],

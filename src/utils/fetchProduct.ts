@@ -1,30 +1,35 @@
-export interface Produto {
-  id: number
-  nome: string
-  preco: number
-  sabores?: string[]
-  sabor?: string
-  fotos?: string[]
-  foto?: string
-  descricao?: string
+import { PrismaClient } from "@prisma/client"
+
+export interface Product {
+  id: string
+  name: string
+  price: number
+  description: string
+  photos: {
+    id: string
+    url: string
+  }[]
 }
 
-export async function getProductById(id: number): Promise<Produto> {
-  const response = await fetch(`http://localhost:3333/produto/${id}`)
+const prisma = new PrismaClient()
 
-  if (!response.ok) {
-    throw new Error("failed to fetch product")
+export async function getProductById(id: string) {
+  const product = await prisma.product.findUnique({
+    where: { id },
+    include: { photos: true },
+  })
+
+  if (!product) {
+    throw new Error("product not found")
   }
 
-  return response.json()
+  return product
 }
 
-export async function getAllProducts(): Promise<Produto[]> {
-  const response = await fetch(`http://localhost:3333/produto`)
+export async function getAllProducts() {
+  const products = await prisma.product.findMany({
+    include: { photos: true },
+  })
 
-  if (!response.ok) {
-    throw new Error("failed to fetch product")
-  }
-
-  return response.json()
+  return products
 }

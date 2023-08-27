@@ -1,7 +1,7 @@
 "use client"
 
 import { ModalViewProduct } from "@/components/ModalViewProduct"
-import { Produto } from "@/utils/fetchProduct"
+import { Product } from "@/utils/fetchProduct"
 
 import {
   Button,
@@ -15,27 +15,28 @@ import {
   getKeyValue,
   useDisclosure,
 } from "@nextui-org/react"
+
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { MdEdit, MdVisibility } from "react-icons/md"
 
 export default function page() {
-  const [produtos, setProdutos] = useState<Produto[] | null>(null)
-  const [produto, setProduto] = useState<Produto>({} as Produto)
+  const [products, setProducts] = useState<Product[]>([])
+  const [product, setProduto] = useState<Product | undefined>()
 
   useEffect(() => {
     async function getProducts() {
-      const response = await fetch("http://localhost:3333/produto")
-      const data = await response.json()
+      const response = await fetch("/api/products")
+      const { products } = await response.json()
 
-      setProdutos(data)
+      setProducts(products)
     }
 
     getProducts()
   }, [])
 
-  const handleOpenView = (produto: Produto) => {
-    setProduto(produto)
+  const handleOpenView = (product: Product) => {
+    setProduto(product)
     onOpen()
   }
 
@@ -48,19 +49,19 @@ export default function page() {
     },
 
     {
-      key: "nome",
+      key: "name",
       label: "Nome do produto",
     },
     {
-      key: "preco",
+      key: "price",
       label: "Preço",
     },
   ]
 
   return (
-    <div className="flex flex-col ">
+    <section className="flex flex-col ">
       <ModalViewProduct
-        product={produto}
+        product={product}
         isOpen={isOpen}
         onOpenChange={onOpenChange}
       />
@@ -75,20 +76,20 @@ export default function page() {
       </div>
 
       <div className="w-full mx-auto items-center  shadow p-5 rounded-lg">
-        {produtos ? (
+        {products ? (
           <Table>
             <TableHeader columns={columns}>
               {(column) => (
                 <TableColumn key={column.key}>{column.label}</TableColumn>
               )}
             </TableHeader>
-            <TableBody items={produtos}>
+            <TableBody items={products}>
               {(item) => (
                 <TableRow key={item.id}>
                   {(columnKey) =>
                     columnKey !== "actions" ? (
                       <TableCell>
-                        {columnKey === "preco"
+                        {columnKey === "price"
                           ? `R$ ${getKeyValue(item, columnKey).toFixed(2)}`
                           : getKeyValue(item, columnKey)}
                       </TableCell>
@@ -97,7 +98,7 @@ export default function page() {
                         <div className="flex items-center gap-3 text-lg">
                           <MdVisibility
                             onClick={() => handleOpenView(item)}
-                            className="cursor-pointer  "
+                            className="cursor-pointer"
                           />
 
                           <MdEdit className="cursor-pointer" />
@@ -113,6 +114,6 @@ export default function page() {
           <Spinner className="mx-auto flex" />
         )}
       </div>
-    </div>
+    </section>
   )
 }

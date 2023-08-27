@@ -8,15 +8,19 @@ import { ProductDescription } from "@/components/ProductDescription"
 import { ProductPhotosCarouselMobile } from "@/components/ProductPhotosCarouselMobile"
 import { ProductPhotosDesktop } from "@/components/ProductPhotosDesktop"
 import { SelectProductType } from "@/components/SelectProductType"
-import { getProductById } from "@/utils/fetchProduct"
+import { getAllProducts, getProductById } from "@/utils/fetchProduct"
+import { Suspense } from "react"
 
 export default async function Page({
   params,
 }: {
-  params: { productId: number }
+  params: { productId: string }
 }) {
-  const productData = getProductById(params.productId)
-  const produto = await productData
+  const [product, products] = await Promise.all([
+    getProductById(params.productId),
+    getAllProducts(),
+  ])
+
   const mockData = {
     highlights: [
       "Queijos importados",
@@ -59,30 +63,36 @@ export default async function Page({
   }
 
   return (
-    <div className="overflow-x-hidden max-w-7xl mx-auto">
-      <main className=" grid grid-cols-3 gap-12 ml-2 lg:ml-12 lg:mr-32">
+    <main className="overflow-x-hidden max-w-7xl mx-auto">
+      <div className="grid grid-cols-3 gap-12 ml-2 lg:ml-12 lg:mr-32">
         <ProductPhotosDesktop productImages={mockData.photos} />
 
         <ProductPhotosCarouselMobile productImages={mockData.photos} />
 
-        <ProductDescription
-          name={produto.nome}
-          description={produto.descricao}
-          highlights={mockData.highlights}
-          rating={mockData.rating}
-          ratingCount={mockData.rating_count}
-        >
-          <SelectProductType flavors={produto.sabores} />
-          <AddCart product={produto} />
-        </ProductDescription>
+        <Suspense fallback={<div>Carregando...</div>}>
+          <ProductDescription
+            name={product.name}
+            description={product.description}
+            highlights={mockData.highlights}
+            rating={mockData.rating}
+            ratingCount={mockData.rating_count}
+          >
+            <SelectProductType
+              products={products}
+              selectedId={params.productId}
+            />
+            <AddCart product={product} />
+          </ProductDescription>
+        </Suspense>
 
         <PizzaWithIngredientsAnimation />
         <PizzaWithIngredientsAnimationMobile />
 
         <PizzaWithHighlits />
         <PizzaWithHighlitsMobile />
+
         <CustommerReviews reviews={mockData.reviews} />
-      </main>
-    </div>
+      </div>
+    </main>
   )
 }

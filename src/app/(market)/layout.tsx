@@ -1,6 +1,7 @@
 // app/layout.tsx
 import { MyHeader } from "@/components/MyHeader"
 import { Metadata } from "next"
+import { Suspense } from "react"
 import { Providers } from "../providers"
 
 export const metadata: Metadata = {
@@ -18,7 +19,7 @@ export default function MarketLayout({
       <body>
         <Providers>
           <MyHeader />
-          {children}
+          <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         </Providers>
       </body>
     </html>

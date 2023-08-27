@@ -1,12 +1,12 @@
 "use client"
 import { Item, useCartStore } from "@/stores/useCartStore"
-import { Produto } from "@/utils/fetchProduct"
 import { Button } from "@nextui-org/button"
+import { Product } from "@prisma/client"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { BsFillDashCircleFill, BsPlusCircleFill } from "react-icons/bs"
 
-export const AddCart = ({ product }: { product: Produto }) => {
+export const AddCart = ({ product }: { product: Product }) => {
   const router = useRouter()
 
   const [quantity, setQuantity] = useState(0)
@@ -57,7 +57,7 @@ export const AddCart = ({ product }: { product: Produto }) => {
         <div className=" text-lg font-light select-none">
           Subtotal:{" "}
           <span className="font-bold">
-            R$ {(quantity * product.preco).toFixed(2)}
+            R$ {(quantity * product.price).toFixed(2)}
           </span>
         </div>
       </div>

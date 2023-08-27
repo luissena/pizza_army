@@ -1,11 +1,15 @@
 "use client"
 import { Button, Input } from "@nextui-org/react"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from "react-icons/md"
 
 export default function Page() {
   const [isVisible, setIsVisible] = useState(false)
+  const router = useRouter()
+  const handleLogin = () => {
+    router.push("/painel")
+  }
 
   const toggleVisibility = () => setIsVisible(!isVisible)
   return (
@@ -36,11 +40,13 @@ export default function Page() {
         type={isVisible ? "text" : "password"}
         className="w-1/4"
       />
-      <Link href="/painel">
-        <Button className="w-1/4 font-['Bebas_Neue'] text-xl leading-3 tracking-[0.72px] bg-[#FFB521] ">
-          Entrar
-        </Button>
-      </Link>
+
+      <Button
+        onClick={handleLogin}
+        className="w-1/4 font-['Bebas_Neue'] text-xl leading-3 tracking-[0.72px] bg-[#FFB521] "
+      >
+        Entrar
+      </Button>
     </div>
   )
 }

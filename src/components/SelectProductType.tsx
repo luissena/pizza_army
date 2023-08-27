@@ -1,24 +1,34 @@
 "use client"
 
-import { useCartStore } from "@/stores/useCartStore"
+import { Product } from "@/utils/fetchProduct"
 import { Select, SelectItem } from "@nextui-org/react"
-import { ChangeEvent, useEffect } from "react"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
 
 export const SelectProductType = ({
-  flavors,
+  products,
+  selectedId,
 }: {
-  flavors: string[] | undefined
+  products: Product[] | undefined
+  selectedId: string
 }) => {
-  const selectedFlavor = useCartStore((state) => state.selectedFlavor)
-  const handleSelectFlavor = useCartStore((state) => state.handleFlavor)
+  const router = useRouter()
+  // const selectedFlavor = useCartStore((state) => state.selectedFlavor)
+  // const handleSelectFlavor = useCartStore((state) => state.handleFlavor)
 
-  const handleSelectionChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    handleSelectFlavor(new Set([e.target.value]))
+  // const handleSelectionChange = (e: ChangeEvent<HTMLSelectElement>) => {
+  //   handleSelectFlavor(new Set([e.target.value]))
+  // }
+
+  // useEffect(() => {
+  //   handleSelectFlavor(new Set([products ? products[0] : "Sem sabores"]))
+  // }, [])
+
+  const [value] = useState(new Set([selectedId]))
+
+  function onChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    router.push(e.target.value)
   }
-
-  useEffect(() => {
-    handleSelectFlavor(new Set([flavors ? flavors[0] : "Sem sabores"]))
-  }, [])
 
   return (
     <div>
@@ -28,13 +38,14 @@ export const SelectProductType = ({
         label="Sabor"
         variant="bordered"
         className="my-2"
-        selectedKeys={selectedFlavor}
-        onChange={handleSelectionChange}
+        selectedKeys={value}
+        onChange={onChange}
+        selectionMode="single"
       >
-        {flavors ? (
-          flavors.map((flavor, index) => (
-            <SelectItem key={flavor} value={flavor}>
-              {flavor}
+        {products ? (
+          products.map((product) => (
+            <SelectItem key={product.id} value={product.id}>
+              {product.name}
             </SelectItem>
           ))
         ) : (
