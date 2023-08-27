@@ -63,6 +63,7 @@ export const AddCart = ({ product }: { product: Product }) => {
 
       <Button
         onClick={handleAddToCart}
+        disabled={quantity < 1}
         className="mt-2 mb-5 font-['Bebas_Neue'] text-sm leading-3 tracking-[0.72px] bg-[#FFB521] w-full"
       >
         ADICIONAR AO CARRINHO
